@@ -1,0 +1,37 @@
+Crontab is a preloaded program in unix machines to run tasks
+periodically in background. In our case data is collected every 5 minutes and uploaded. Crontab runs even after reboot and hence it's better than running a simple while loop in python. 
+
+Inorder to run crontab automatically after reboot, one has to enable autologin : http://www.opentechguides.com/how-to/article/raspberry-pi/5/raspberry-pi-auto-start.html
+
+FOR JESSIE (NEW !) - https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=127042
+1)sudo nano etc/systemd/system/getty@tty1.service.d/autologin.conf
+2) write the following
+
+Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin pi --noclear %I 38400 linux
+
+3) ctrl + X then Y to save and exit
+4 ) run : 
+sudo systemctl enable getty@tty1.service
+FOR WHEEZY (OLD !)
+1) sudo nano /etc/inittab
+2)Navigate to the following line in inittab
+1:2345:respawn:/sbin/getty 115200 tty1
+And add a # at the beginning of the line to comment it out
+#1:2345:respawn:/sbin/getty 115200 tty1
+3)Add the following line just below the commented line1:2345:respawn:/bin/login -f pi tty1 </dev/tty1 >/dev/tty1 2>&1
+To put new crontab tasks or to edit run : crontab -e
+4) save and exit 
+Ctrl + X followed by shift + y
+
+below the last line the task was added:
+*/10 * * * * sudo /usr/bin/python /home/pi/cron.py >/dev/null 2>&1
+
+this task runs every 10 minutes. Incase one wants to change the periodicity the format can be generated through https://crontab.guru/. 
+
+'sudo /usr/bin/python' is used to call python
+and /home/pi/cron.py is the file path 
+'>/dev/null 2>&1' was used to run task in background and hide any outputs if given (usually error outputs are given)
+
+cron was an example file. 

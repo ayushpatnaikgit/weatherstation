@@ -1,0 +1,8 @@
+to enable ssh run 
+1) 'sudo raspi-config'
+2) select 'interfacing options'
+3) select 'ssh' 
+4) select 'Enable or disable ssh server'
+5) Enable ssh !
+
+https://www.raspberrypi.org/documentation/remote-access/ssh/

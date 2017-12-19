@@ -1,0 +1,12 @@
+go to wunderground signup page and signup
+https://www.wunderground.com/signup
+click on more and then on register PWS or click go to 
+https://www.wunderground.com/personal-weather-station/signup
+verify your email !
+Again go to register your PWS if it doesn't take you automatically
+verify your location by first search the place and then dragging the marker
+Put the elevation and height in feet
+Then click verify location !
+Fill out the next page, use 'other' in hardware type
+It should give you a KEY and PASSWORD
+This key and password should be put in the crontab program

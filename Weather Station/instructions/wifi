@@ -1,0 +1,47 @@
+An ethernet cable doesn't require setup like any other computer
+1) To setup wifi through command line edit "wpa-supplicant"
+
+by running :
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+
+once the file opens put the ssid and password: 
+              
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+        ssid="Example"
+        psk="Example"
+
+}
+
+ctrl + X then Y to save and exit. 
+
+for some networks wifi wasn't working. Hence static IP was used. The system wasn't able to ping (connect to internet) was there was IP address. 
+
+To see IP address run 'ifconfig'
+To ping run 'ping google.com'
+
+2) sudo nano /etc/network/interfaces was used to open network interfaces. 
+
+auto lo
+iface lo inet loopback
+iface wlan0 inet static
+address 192.XXX.XX.XXX - use the IP address shown in ifconfig earlier
+netmask 255.255.XXX.X
+gateway 192.100.XX.X
+broadcast 192.XXX.XX.XXX
+allow-hotplug wlan0
+iface eth0 inet dhcp
+#auto eth0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+'ifconfig' was run in another computer to see netmask, gateway and  broadcast
+
+ctrl + X then Y to save and exit. 
+
+Above can be done in GUI
+
+run 'startx' to boot into GUI
+

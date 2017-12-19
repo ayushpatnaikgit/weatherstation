@@ -1,0 +1,42 @@
+First ran :
+
+1) sudo apt-get update
+2) sudo apt-get install build-essential python-dev
+
+Then installed pip for python : https://pip.pypa.io/en/stable/installing/
+
+1) wget https://bootstrap.pypa.io/get-pip.py
+2) sudo python get-pip.py
+
+List of packages
+1) RPi.GPIO
+2) time
+3) Adafruit_BMP.BMP085
+4) urlencode
+5) urllib2
+6) Adafruit_DHT
+7) datetime
+8) os
+9) sys 
+
+datetime, time, urlencode, urlib2, os and sys are usually preinstalled. (Incase they aren't, they can be installed using pip)
+
+Ran
+
+$ sudo pip install 'package name with quotes'
+
+example : sudo pip install RPi.GPIO
+
+
+Incase there was problem installing the packages they were installed manually. 
+
+First found the github page of the module.
+Example : https://github.com/adafruit/Adafruit_Python_DHT
+then use git clone to download the module by running :
+git clone https://github.com/adafruit/Adafruit_Python_DHT
+1) sudo python Adafruit_Python_DHT/setup.py install
+
+
+
+
+

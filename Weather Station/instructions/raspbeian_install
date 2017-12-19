@@ -1,0 +1,19 @@
+download Raspbian - https://www.raspberrypi.org/downloads/raspbian/
+download SD formater for your computer - https://www.sdcard.org/downloads/formatter_4/index.html
+For mac:
+0) insert as SD 
+1) run 'diskutil list' to see the list of devices
+2) locate the SDcard (by size)
+3) Format the SDcard using the formatter tool
+4) run replace n with disk number 'sudo dd bs=1m if=rpi.img of=/dev/rdiskn'
+If it says resource busy run 'diskutil again' and check for partitions
+4) umount partitions example:
+if partition is disk2s1 then run: 
+'sudo diskutil unmount /dev/disk2s1'
+5) after umount do step 4 again
+
+For linux:
+
+comprehensive instructions can be found here : 
+
+https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
